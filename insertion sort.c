@@ -1,23 +1,20 @@
 #include<stdio.h>
 int main()
 {
-	int array[100],n,c,d,min,temp;
+	int array[100],n,c,d,temp;
 	printf("enter no of elements");
 	scanf("%d",&n);
 	printf("enter %d integers\n",n);
 	for(c=0;c<n;c++)
 	   scanf("%d",&array[c]);
-	for(c=0;c<n;c++)
+	for(c=1;c<n;c++)
 	{
-		min=c;
-		for(d=c+1;d<n;d++)
-		{
-			if(array[d]<array[min])
-			min=d;
-		}
 		temp=array[c];
-		array[c]=array[min];
-		array[min]=temp;
+		for(d=c;d>0 && temp<array[d-1];d--)
+		{
+			array[d]=array[d-1];
+		}
+		array[d]=temp;
 	}
 	printf("the sorted list\n");
 	for(c=0;c<n;c++)
@@ -25,4 +22,3 @@ int main()
 	return 0;
 }
 	
-
